@@ -1,5 +1,5 @@
 #SOURCE = $(filter-out main.cpp $(wildcard *.cpp))
-CC=mingw32-gcc
+#CC=mingw32-gcc
 SOURCE = $(wildcard *.cpp)
 OBJ = $(patsubst %.cpp, %.o, $(SOURCE))
 LD_LIBRARY_PATH = ./src/lib
