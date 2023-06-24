@@ -1,6 +1,15 @@
 # snake
 A snake game based on SDL2, SDL2_image and SDL2_ttf. A project for practing SDL2 library.
 
+# Windows and Linux
+In this project, you don't need download or install any other library, all we need are in this project except the "make" and "g++" tools. Whatever you are using linux or windows system, the only thing you need modify is the "Makefile".
+## Windows
+comment "OS=LINUX" and uncomment "OS=WINDOWS"
+## Linux
+comment "OS=WINDOWS" and uncomment "OS=LINUX"
+
+
+
 # some pictures for running this game
 ![startUI](https://github.com/haojie1/snake/blob/main/src/image/startUI.png?raw=true)
 ![process](https://github.com/haojie1/snake/blob/main/src/image/process.png?raw=true)

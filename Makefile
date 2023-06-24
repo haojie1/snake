@@ -1,5 +1,6 @@
 #SOURCE = $(filter-out main.cpp $(wildcard *.cpp))
-OS=WINDOW
+OS=WINDOWS
+#OS=LINUX
 
 CC=g++
 CCFLAGS=-Wall -g
