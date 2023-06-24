@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <cmath>
+#include <random>
 #include <iostream>
 #include <SDL2/SDL.h>
 

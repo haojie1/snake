@@ -3,10 +3,10 @@
 
 void game::start() {
 	bool run = true, opt, timeOut = false;
-	char infoString[20];
+	char infoString[30];
 	size_t frameRatio = 60, count = 0;
 	uint32_t frameStart, frameEnd;
-	sprintf(infoString, "score: %d frameRatio: %u", _score, frameRatio);
+	sprintf(infoString, "score: %d frameRatio: %lu", _score, frameRatio);
 	opt = _pRend->startUI();
 	if (opt == false) {
 		return;
@@ -22,7 +22,7 @@ void game::start() {
 			} else {
 				++_score;
 			}
-			sprintf(infoString, "score: %d frameRatio: %u", _score, frameRatio);
+			sprintf(infoString, "score: %d frameRatio: %lu", _score, frameRatio);
 		}
 		_pRend->showInfo(infoString);
 		frameEnd = SDL_GetTicks();

@@ -5,7 +5,13 @@
 #include "render.h"
 #include "game.h"
 
-int WinMain(int argc, char** argv[])
+//int WinMain(int argc, char** argv[])
+#ifdef __linux
+int main(int argc, char* argv[])
+#endif
+#ifdef WINVER
+int WinMain(int argc, char* argv[])
+#endif
 {
     int res;
     res = SDL_Init(SDL_INIT_EVERYTHING);
