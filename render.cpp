@@ -61,7 +61,7 @@ void myRender::paint(const snake& s, const food& f) {
 void myRender::showInfo(const char* info) {
 	SDL_Surface* pSurface = TTF_RenderText_Solid(_pFont, info, {0, 255, 0, 0});
 	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(_pRen, pSurface);
-	SDL_Rect rect{0, 0, 100, 25};
+	SDL_Rect rect{0, 0, 250, 25};
 	SDL_RenderCopy(_pRen, pTexture, nullptr, &rect);
 	SDL_RenderPresent(_pRen);
 
@@ -70,6 +70,7 @@ void myRender::showInfo(const char* info) {
 }
 
 bool myRender::startUI() {
+	/*
 	SDL_Surface* pSurface = IMG_Load("./src/image/snake.jpg");
 	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(_pRen, pSurface);
 	SDL_RenderCopy(_pRen, pTexture, nullptr, nullptr);
@@ -80,6 +81,11 @@ bool myRender::startUI() {
 	pTexture = SDL_CreateTextureFromSurface(_pRen, pSurface);
 	SDL_Rect rect{400, 0, 200, 200};
 	SDL_RenderCopy(_pRen, pTexture, nullptr, &rect);
+	SDL_RenderPresent(_pRen);
+	*/
+	SDL_RenderCopy(_pRen, _pSnakeTexture, nullptr, nullptr);
+	SDL_Rect rect{400, 0, 200, 200};
+	SDL_RenderCopy(_pRen, _pStartTexture, nullptr, &rect);
 	SDL_RenderPresent(_pRen);
 
 	SDL_Event event;
@@ -112,8 +118,38 @@ bool myRender::startUI() {
 	}
 	
 
+	/*
 	SDL_FreeSurface(pSurface);
 	SDL_DestroyTexture(pTexture);
-
+	*/
 	return result;
+}
+
+void myRender::exitUI() {
+	/*
+	SDL_Surface* pSurface = IMG_Load("./exit.jpg");
+	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(_pRen, pSurface);
+	*/
+	SDL_RenderCopy(_pRen, _pExitTexture, nullptr, nullptr);
+	SDL_RenderPresent(_pRen);
+
+	SDL_Event event;
+	bool running = true;
+	while (running)
+	{
+		while (SDL_PollEvent(&event))
+		{
+			switch (event.type)
+			{
+			case SDL_QUIT:
+				running = false;
+				break;
+			
+			default:
+				break;
+			}
+		}
+		
+	}
+	
 }

@@ -10,14 +10,12 @@ class food {
 private:
 	int _x, _y;
 	size_t _gridNumberRow, _gridNumberCol;
-	SDL_Color _color;
 public:
-	food(size_t gridNumberRow, size_t gridNumberCol, int x = 10, int y = 10) : 
-		_x(x), _y(y), _gridNumberRow(gridNumberRow), _gridNumberCol(gridNumberCol), _color({0, 0, 255, 0}) {}
-	
+	food(size_t gridNumberRow, size_t gridNumberCol, int x = 10, int y = 10) :
+		_x(x), _y(y), _gridNumberRow(gridNumberRow), _gridNumberCol(gridNumberCol) {}
+
 	int getX() const {return _x;}
 	int getY() const {return _y;}
-	SDL_Color getColor() const {return _color;}
 
 	void updatePos() {
 		#ifdef __linux

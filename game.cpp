@@ -2,16 +2,39 @@
 #include <string>
 
 void game::start() {
-	bool run = true, opt;
+	bool run = true, opt, timeOut = false;
 	char infoString[20];
-	sprintf(infoString, "score: %d", _score);
+	size_t frameRatio = 60, count = 0;
+	uint32_t frameStart, frameEnd;
+	sprintf(infoString, "score: %d frameRatio: %u", _score, frameRatio);
 	opt = _pRend->startUI();
 	if (opt == false) {
 		return;
 	}
+	frameStart = SDL_GetTicks();
 	while (run) {
 		run = _pController->moveSnake(_pSnake);
+		_pSnake->update(_pFood);
+		_pRend->paint(*_pSnake, *_pFood);
+		if (_pSnake->getCatchFood() || timeOut) {
+			if (timeOut) {
+				timeOut = false;
+			} else {
+				++_score;
+			}
+			sprintf(infoString, "score: %d frameRatio: %u", _score, frameRatio);
+		}
+		_pRend->showInfo(infoString);
+		frameEnd = SDL_GetTicks();
+		++count;
+		if (frameEnd-frameStart >= 1000) {
+			frameRatio = count;
+			frameStart = frameEnd;
+			count = 0;
+			timeOut = true;
+		}
 		if (_pSnake->alive() == false) {
+			#ifdef CANRESTART
 			bool opt = quitOrRestart();
 			if (opt) {
 				delete _pSnake;
@@ -35,15 +58,12 @@ void game::start() {
 			} else {
 				run = false;
 			}
+			#else
+				_pRend->exitUI();
+				run = false;
+			#endif
 		}
-		_pSnake->update(_pFood);
-		_pRend->paint(*_pSnake, *_pFood);
-		if (_pSnake->getCatchFood()) {
-			++_score;
-			sprintf(infoString, "score: %d", _score);
-		}
-		_pRend->showInfo(infoString);
-		SDL_Delay(20);
+		SDL_Delay(15);
 	}
 }
 

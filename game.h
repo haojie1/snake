@@ -9,6 +9,8 @@
 #include <cmath>
 #include <SDL2/SDL.h>
 
+//#define CANRESTART
+
 struct gameInfo {
 	int score;
 	int frameRatio;

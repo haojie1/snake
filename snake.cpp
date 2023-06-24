@@ -43,7 +43,7 @@ void snake::updateHeadPos(food* pFood) {
 			_body.insert(_body.begin(), {newHead_x, newHead_y});
 			_speed = baseSpeed + baseSpeed * log10(_body.size());
 			_catchFood = true;
-			
+
 		} else {
 			_body.insert(_body.begin(), {newHead_x, newHead_y});
 			_body.pop_back();
@@ -61,14 +61,6 @@ void snake::update(food* pFood)
 		updateHead();
 		updateHeadPos(pFood);
 	}
-}
-
-void snake::setBodyColor(const SDL_Color& color) {
-	_bodyColor = color;
-}
-
-void snake::setHeadColor(const SDL_Color& color) {
-	_headColor = color;
 }
 
 
