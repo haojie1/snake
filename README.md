@@ -8,20 +8,24 @@ comment "OS=LINUX" and uncomment "OS=WINDOWS"
 ## Linux
 comment "OS=WINDOWS" and uncomment "OS=LINUX"
 
-
-
 # some pictures for running this game
 ![startUI](https://github.com/haojie1/snake/blob/main/src/image/startUI.png?raw=true)
 ![process](https://github.com/haojie1/snake/blob/main/src/image/process.png?raw=true)
 ![exit](https://github.com/haojie1/snake/blob/main/src/image/exit.jpg?raw=true)
 
 # Dependencies for Running
-Only g++ and make are needed. SDL2, SDL2_Image and SDL2_TTF are included in this repo. So you don't need to download it any more. I think this will make life better for all beginners.  
-Notes: SDL2, SDL2_Image and SDL2_TTF are suit for windows, so if you are using linux, you need to download the sdl2 library and override the contents of src directory.
+As saied before , Only "g++" and "make" tools are needed. SDL2, SDL2_Image and SDL2_TTF are included in this repo. So you don't need to download it any more. I think this will make life better for all beginners.  
+## Windows
+g++.exe (x86_64-posix-seh-rev2 6.3.0)
+mingw32-make.exe (GNU Make 4.1, Built for x86_64-w64-mingw32)
+[download address](https://github.com/niXman/mingw-builds-binaries/releases)
+## Linux
+Nothing you need to download and install. make and g++ are provided for almost all linux sytem.
 
 # how to start
 it's very easy to start this project. As you can see, all files and libs needed in this game are here. All you need to compile this program is to rum 'make' command. This program is tested only in windows.
 1. Clone this repo.
+2. modify "Makefile" according to your system
 2. Compile: make
 3. Run it: main.exe
 
